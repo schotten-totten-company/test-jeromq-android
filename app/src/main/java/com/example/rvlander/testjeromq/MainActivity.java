@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             Random rand = new Random(System.nanoTime());
             String identity = String.format("%04X-%04X", rand.nextInt(0x10000), rand.nextInt(0x10000));
             worker.setIdentity(identity.getBytes());
-            worker.connect("tcp://localhost:5556");
+            worker.connect("tcp://83.152.93.57:5555");
 
             //  Tell broker we're ready for work
             System.out.printf("I: (%s) worker ready\n", identity);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //  Simulate various problems, after a few cycles
                 cycles++;
-                if (cycles > 3 && rand.nextInt(5) == 0) {
+                /*if (cycles > 3 && rand.nextInt(5) == 0) {
                     System.out.printf("I: (%s) simulating a crash\n", identity);
                     msg.destroy();
                     break;
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (Exception e) {
                         System.out.println("Can't sleep");
                     }
-                }
+                }*/
                 System.out.printf("I: (%s) normal reply\n", identity);
                 try {
                     Thread.sleep(3000);
